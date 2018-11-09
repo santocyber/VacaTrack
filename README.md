@@ -34,6 +34,11 @@ https://github.com/blynkkk/blynk-library
 
 https://github.com/jfturcot/SimpleTimer.git
 
+Configurando o Server
+---------------------
+
+https://github.com/blynkkk/blynk-server.git
+
 
 Como vai funcionar
 ---------------------
