@@ -27,3 +27,8 @@ Como vai funcionar
 ---------------------
 
 https://www.youtube.com/watch?v=-MJ5GVy8dh4
+
+
+Bibliografia/Videografia
+
+https://www.youtube.com/watch?v=F4tMvfXDSbU
