@@ -44,15 +44,19 @@ Adicione na source.list
 sudo pico /etc/apt/sources.list.d/java-10-debian.list
 
 deb http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main
+
 deb-src http://ppa.launchpad.net/linuxuprising/java/ubuntu bionic main
 
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
 
 sudo apt-get update
+
 sudo apt-get install oracle-java10-installer
+
 sudo apt-get install oracle-java10-set-default
 
 wget "https://github.com/blynkkk/blynk-server/releases/download/v0.40.2/server-0.40.2-java8.jar"
+
 java -jar server-0.40.2-java8.jar -dataFolder /home/pi/Blynk
 
 
