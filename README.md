@@ -52,6 +52,9 @@ sudo apt-get update
 sudo apt-get install oracle-java10-installer
 sudo apt-get install oracle-java10-set-default
 
+wget "https://github.com/blynkkk/blynk-server/releases/download/v0.40.2/server-0.40.2-java8.jar"
+java -jar server-0.40.2-java8.jar -dataFolder /home/pi/Blynk
+
 
 
 
