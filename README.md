@@ -26,6 +26,9 @@ https://github.com/Grafana-Track-Map/grafana-track-map
 
 wget https://github.com/tkurki/grafana-track-map/archive/master.zip
 
+Libraries necessarias
+----------------
+https://github.com/jdollar/espsoftwareserial/
 
 
 Como vai funcionar
