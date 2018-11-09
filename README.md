@@ -32,6 +32,8 @@ https://github.com/jdollar/espsoftwareserial/
 
 https://github.com/blynkkk/blynk-library
 
+https://github.com/jfturcot/SimpleTimer.git
+
 
 Como vai funcionar
 ---------------------
