@@ -41,6 +41,8 @@ https://github.com/cristiansteib/GPS-neo-6m
 
 https://github.com/cspiel1/esp32-gpstracker
 
+https://github.com/Bjoerns-TB/ttn-gps-tracker
+
 https://www.thethingsnetwork.org/labs/story/gps-tracker
 
 https://www.youtube.com/watch?v=F4tMvfXDSbU
