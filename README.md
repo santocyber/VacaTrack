@@ -22,6 +22,11 @@ https://www.aliexpress.com/item/Smart-Thin-Film-Flexible-Solar-Panel-Battery-Cha
 
 http://www.gpsvisualizer.com/
 
+https://github.com/Grafana-Track-Map/grafana-track-map
+
+wget https://github.com/tkurki/grafana-track-map/archive/master.zip
+
+
 
 Como vai funcionar
 ---------------------
@@ -30,5 +35,6 @@ https://www.youtube.com/watch?v=-MJ5GVy8dh4
 
 
 Bibliografia/Videografia
+https://www.thethingsnetwork.org/labs/story/gps-tracker
 
 https://www.youtube.com/watch?v=F4tMvfXDSbU
