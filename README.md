@@ -3,7 +3,8 @@ Rastreamento de animais utilizando rede WiFi , ESP32 , modulo GPS , painel solar
 
 Rastreamento usando ESP32 e Bluetooth Low Energy BLE
 ====================================================
-= Material Necessario
+Material Necessario
+-------------------
 
 - Modulo GPS neo6mv2
 
