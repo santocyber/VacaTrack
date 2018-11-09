@@ -22,3 +22,8 @@ https://www.aliexpress.com/item/Smart-Thin-Film-Flexible-Solar-Panel-Battery-Cha
 
 http://www.gpsvisualizer.com/
 
+
+Como vai funcionar
+---------------------
+
+https://www.youtube.com/watch?v=-MJ5GVy8dh4
