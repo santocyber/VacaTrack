@@ -30,6 +30,8 @@ Libraries necessarias
 ----------------
 https://github.com/jdollar/espsoftwareserial/
 
+https://github.com/blynkkk/blynk-library
+
 
 Como vai funcionar
 ---------------------
