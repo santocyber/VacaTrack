@@ -1,46 +1,12 @@
-
-#include <dummy.h>
-
-#include <ESP8266_Lib.h>
-
-
-#include <ESP8266_Lib.h>
-
-
-
-#include <Blynk.h>
-
-#include <dummy.h>
-
-#include <ESP8266_Lib.h>
-
-
-
-#include <ESP8266_Lib.h>
-
-//#include <ESP8266_Lib.h>
-
-
-
-
-
-
-
-
-
-/* The Code is developed by Alok Shaw (alokom78@gmaail.com) and is free to use and modify. Watch the full explanation for the same on 
- *  Youtube : www.youtube.com/roboshala 
-*/
-
-
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 #define BLYNK_PRINT Serial
-#include <ESP8266WiFi.h>
-#include <BlynkSimpleEsp8266.h>
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
 
-static const int RXPin = 4, TXPin = 5;   // GPIO 4=D2(conneect Tx of GPS) and GPIO 5=D1(Connect Rx of GPS
-static const uint32_t GPSBaud = 9600; //if Baud rate 9600 didn't work in your case then use 4800
+static const int RXPin = 19, TXPin = 18;   // GPIO 4=D2(conneect Tx of GPS) and GPIO 5=D1(Connect Rx of GPS
+static const uint32_t GPSBaud = 4800; //if Baud rate 9600 didn't work in your case then use 4800
 
 TinyGPSPlus gps; // The TinyGPS++ object
 WidgetMap myMap(V0);  // V0 for virtual pin of Map Widget
@@ -53,9 +19,10 @@ float spd;       //Variable  to store the speed
 float sats;      //Variable to store no. of satellites response
 String bearing;  //Variable to store orientation or direction of GPS
 
-char auth[] = "36d976d85a2c4a32ab1a57851b15bf08";              //Your Project authentication key
-char ssid[] = "PULP ";                                       // Name of your network (HotSpot or Router name)
-char pass[] = "6e03c772ab2c";                                      // Corresponding Password
+
+char auth[] = "922ea8d166054798a4b0bdb5aa524c67";              //Your Project authentication key
+char ssid[] = "internetSA2";                                       // Name of your network (HotSpot or Router name)
+char pass[] = "fadababaca";                                      // Corresponding Password
 
 
 
@@ -125,5 +92,3 @@ void displayInfo()
 
   Serial.println();
 }
-BlynkGPS.txt
-Exibindo BlynkGPS.txt…
