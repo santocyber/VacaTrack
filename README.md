@@ -1,8 +1,7 @@
 # VacaTrack
 Rastreamento de animais utilizando rede WiFi , ESP32 , modulo GPS , painel solar e bateria 18650 
+=============================================
 
-Rastreamento usando ESP32 e Bluetooth Low Energy BLE
-====================================================
 Material Necessario
 -------------------
 
