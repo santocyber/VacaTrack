@@ -34,6 +34,8 @@ https://github.com/blynkkk/blynk-library
 
 https://github.com/jfturcot/SimpleTimer.git
 
+https://github.com/mathworks/thingspeak-arduino.git
+
 Configurando o Server
 ---------------------
 
