@@ -8,9 +8,13 @@
 #include <Arduino.h>
 #include "ThingSpeak.h"
 
+#define uS_TO_S_FACTOR 1000000  /* Conversion factor for micro seconds to seconds */
+#define TIME_TO_SLEEP  60        /* Time ESP32 will go to sleep (in seconds) */
+RTC_DATA_ATTR int bootCount = 0;
+
 unsigned long myChannelNumber = 623666;
 const char * myWriteAPIKey = "KO2GCBF0RJT4WM1C";
-
+WiFiClient  client;
 
 const int BAUD_RATE = 9600;
 HardwareSerial mySerial(2); 
@@ -53,6 +57,7 @@ void setup()
   mySerial.begin(BAUD_RATE, SERIAL_8N1, RX_PIN, TX_PIN);
   //ss.begin(GPSBaud);
   Blynk.begin(auth, ssid, pass);
+  ThingSpeak.begin(client);
   timer.setInterval(15000L, checkGPS); // every 5s check if GPS is connected, only really needs to be done once
 }
 
@@ -121,9 +126,12 @@ void displayInfo()
                       
     delay (5000);
 
-    
+   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
+   esp_deep_sleep_start();
   }
   
 
   Serial.println();
+   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
+   esp_deep_sleep_start();
 }
