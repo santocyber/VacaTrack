@@ -80,3 +80,6 @@ https://github.com/Bjoerns-TB/ttn-gps-tracker
 https://www.thethingsnetwork.org/labs/story/gps-tracker
 
 https://www.youtube.com/watch?v=F4tMvfXDSbU
+
+
+https://github.com/santocyber/VacaTrack/blob/master/ESP32-DOIT-DEVKIT-V1-Board-Pinout-36-GPIOs-Copy-768x554.jpg
