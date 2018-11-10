@@ -4,14 +4,24 @@
 #include <WiFi.h>
 #include <WiFiClient.h>
 #include <BlynkSimpleEsp32.h>
+#include <HardwareSerial.h>
+#include <Arduino.h>
 
-static const int RXPin = 19, TXPin = 18;   // GPIO 4=D2(conneect Tx of GPS) and GPIO 5=D1(Connect Rx of GPS
-static const uint32_t GPSBaud = 4800; //if Baud rate 9600 didn't work in your case then use 4800
+const int BAUD_RATE = 9600;
+HardwareSerial mySerial(2); 
+
+//static const int RXPin = 5, TXPin = 4;   // GPIO 4=D2(conneect Tx of GPS) and GPIO 5=D1(Connect Rx of GPS
+static const uint32_t GPSBaud = 9600; //if Baud rate 9600 didn't work in your case then use 4800
+//Pino serial RX que deve ser conectado no TX do SIM808, usado para configurar a variável "mySerial"
+const int RX_PIN = 16;
+//Pino serial TX que deve ser conectado no RX do SIM808, usado para configurar a variável "mySerial"
+const int TX_PIN = 17;
+
 
 TinyGPSPlus gps; // The TinyGPS++ object
 WidgetMap myMap(V0);  // V0 for virtual pin of Map Widget
 
-SoftwareSerial ss(RXPin, TXPin);  // The serial connection to the GPS device
+//SoftwareSerial ss(RXPin, TXPin);  // The serial connection to the GPS device
 
 BlynkTimer timer;
 
@@ -21,7 +31,7 @@ String bearing;  //Variable to store orientation or direction of GPS
 
 
 char auth[] = "922ea8d166054798a4b0bdb5aa524c67";              //Your Project authentication key
-char ssid[] = "internetSA2";                                       // Name of your network (HotSpot or Router name)
+char ssid[] = "internetSA";                                       // Name of your network (HotSpot or Router name)
 char pass[] = "fadababaca";                                      // Corresponding Password
 
 
@@ -35,9 +45,10 @@ void setup()
 {
   Serial.begin(115200);
   Serial.println();
-  ss.begin(GPSBaud);
+  mySerial.begin(BAUD_RATE, SERIAL_8N1, RX_PIN, TX_PIN);
+  //ss.begin(GPSBaud);
   Blynk.begin(auth, ssid, pass);
-  timer.setInterval(5000L, checkGPS); // every 5s check if GPS is connected, only really needs to be done once
+  timer.setInterval(15000L, checkGPS); // every 5s check if GPS is connected, only really needs to be done once
 }
 
 void checkGPS(){
@@ -51,10 +62,10 @@ void checkGPS(){
 void loop()
 {
  
-    while (ss.available() > 0) 
+    while (mySerial.available() > 0) 
     {
       // sketch displays information every time a new sentence is correctly encoded.
-      if (gps.encode(ss.read()))
+      if (gps.encode(mySerial.read()))
         displayInfo();
   }
   Blynk.run();
