@@ -95,7 +95,8 @@ void displayInfo()
        Blynk.virtualWrite(V4, sats);
 
        bearing = TinyGPSPlus::cardinal(gps.course.value()); // get the direction
-       Blynk.virtualWrite(V5, bearing);               
+       Blynk.virtualWrite(V5, bearing);      
+    delay (5000);
       
     
   }
