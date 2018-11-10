@@ -1,5 +1,5 @@
 # VacaTrack
-Rastreamento de animais utilizando rede WiFi , ESP32 , modulo GPS , painel solar e bateria 18650 
+Rastreamento de animais utilizando rede WiFi-mesh , ESP32 , modulo GPS , painel solar e bateria 18650 
 =============================================
 
 Material Necessario
@@ -37,7 +37,7 @@ https://github.com/jfturcot/SimpleTimer.git
 Configurando o Server
 ---------------------
 
-https://github.com/blynkkk/blynk-server.git
+git clone https://github.com/blynkkk/blynk-server.git
 
 Adicione na source.list
 
