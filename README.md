@@ -20,6 +20,8 @@ https://www.aliexpress.com/item/Smart-Thin-Film-Flexible-Solar-Panel-Battery-Cha
 
 - GPS Vizualizer
 
+https://thingspeak.com/channels/623666
+
 http://www.gpsvisualizer.com/
 
 https://github.com/Grafana-Track-Map/grafana-track-map
