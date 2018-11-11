@@ -13,7 +13,7 @@
 #include <SD.h>
 
 #define uS_TO_S_FACTOR 1000000  /* Conversion factor for micro seconds to seconds */
-#define TIME_TO_SLEEP  60        /* Time ESP32 will go to sleep (in seconds) */
+#define TIME_TO_SLEEP  30        /* Time ESP32 will go to sleep (in seconds) */
 RTC_DATA_ATTR int bootCount = 0;
 
 int GREEN_LED_PIN = 27;
@@ -66,13 +66,13 @@ void setup()
   //ss.begin(GPSBaud);
   Blynk.begin(auth, ssid, pass);
   ThingSpeak.begin(client);
-  timer.setInterval(15000L, checkGPS); // every 5s check if GPS is connected, only really needs to be done once
+  timer.setInterval(5000L, checkGPS); // every 5s check if GPS is connected, only really needs to be done once
   pinMode(GREEN_LED_PIN,OUTPUT);
-   digitalWrite(GREEN_LED_PIN,HIGH);
    
 }
 
 void checkGPS(){
+ 
   if (gps.charsProcessed() < 10)
   {
     Serial.println(F("No GPS detected: check wiring."));
@@ -82,7 +82,9 @@ void checkGPS(){
 
 void loop()
 {
-
+digitalWrite(GREEN_LED_PIN,HIGH); 
+ 
+delay (4000);
     while (mySerial.available() > 0) 
     {
       // sketch displays information every time a new sentence is correctly encoded.
@@ -143,17 +145,18 @@ Serial.println(timeClient.getFormattedTime());
 
 //##########Sleep mode
 Serial.print("Entrando em modo economico... ");
-digitalWrite(GREEN_LED_PIN,LOW);
-                      
-   //esp_sleep_enable_timer_wakeup(60000);
-   //esp_deep_sleep_start();
-delay (600000);
+//digitalWrite(GREEN_LED_PIN,LOW);
+ //delay (60000);                     
+  esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
+  esp_deep_sleep_start();
+  //ESP.restart();
+
    
   }
   
 
   Serial.println();
   Serial.print("Aguardando GPS...");
-  delay (1000);
+  delay (4000);
   
 }
