@@ -7,10 +7,16 @@
 #include <HardwareSerial.h>
 #include <Arduino.h>
 #include "ThingSpeak.h"
+#include <NTPClient.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <SD.h>
 
 #define uS_TO_S_FACTOR 1000000  /* Conversion factor for micro seconds to seconds */
 #define TIME_TO_SLEEP  60        /* Time ESP32 will go to sleep (in seconds) */
 RTC_DATA_ATTR int bootCount = 0;
+
+int GREEN_LED_PIN = 27;
 
 unsigned long myChannelNumber = 623666;
 const char * myWriteAPIKey = "KO2GCBF0RJT4WM1C";
@@ -44,7 +50,9 @@ char ssid[] = "internetSA";                                       // Name of you
 char pass[] = "fadababaca";                                      // Corresponding Password
 
 
-
+int16_t utc = -3;
+WiFiUDP ntpUDP;
+NTPClient timeClient(ntpUDP, "a.st1.ntp.br", utc*3600, 60000);
 
 //unsigned int move_index;         // moving index, to be used later
 unsigned int move_index = 1;       // fixed location for now
@@ -59,6 +67,9 @@ void setup()
   Blynk.begin(auth, ssid, pass);
   ThingSpeak.begin(client);
   timer.setInterval(15000L, checkGPS); // every 5s check if GPS is connected, only really needs to be done once
+  pinMode(GREEN_LED_PIN,OUTPUT);
+   digitalWrite(GREEN_LED_PIN,HIGH);
+   
 }
 
 void checkGPS(){
@@ -71,7 +82,7 @@ void checkGPS(){
 
 void loop()
 {
- 
+
     while (mySerial.available() > 0) 
     {
       // sketch displays information every time a new sentence is correctly encoded.
@@ -98,6 +109,10 @@ void displayInfo()
     Serial.println(latitude, 6);  // float to x decimal places
     Serial.print("LONG: ");
     Serial.println(longitude, 6);
+    Serial.print("Satelite: ");
+    Serial.println(sats, 6);
+    Serial.print("Speed: ");
+    Serial.println(spd, 6);
     Blynk.virtualWrite(V1, String(latitude, 6));   
     Blynk.virtualWrite(V2, String(longitude, 6));  
     myMap.location(move_index, latitude, longitude, "GPS_Location");
@@ -123,15 +138,22 @@ void displayInfo()
     ThingSpeak.setField(1, latbuf);
     ThingSpeak.setField(2, lonbuf);
     ThingSpeak.writeFields(myChannelNumber, myWriteAPIKey);  
-                      
-    delay (5000);
 
-   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
-   esp_deep_sleep_start();
+Serial.println(timeClient.getFormattedTime());
+
+//##########Sleep mode
+Serial.print("Entrando em modo economico... ");
+digitalWrite(GREEN_LED_PIN,LOW);
+                      
+   //esp_sleep_enable_timer_wakeup(60000);
+   //esp_deep_sleep_start();
+delay (600000);
+   
   }
   
 
   Serial.println();
-   esp_sleep_enable_timer_wakeup(TIME_TO_SLEEP * uS_TO_S_FACTOR);
-   esp_deep_sleep_start();
+  Serial.print("Aguardando GPS...");
+  delay (1000);
+  
 }
