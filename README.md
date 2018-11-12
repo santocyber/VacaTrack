@@ -91,5 +91,4 @@ https://matchx.io/
 
 Battery life calculator:  http://www.of-things.de/battery-life-calculator.php
 
-
-https://github.com/santocyber/VacaTrack/blob/master/ESP32-DOIT-DEVKIT-V1-Board-Pinout-36-GPIOs-Copy-768x554.jpg
+https://github.com/yschaeff/esp32-wifi-example
