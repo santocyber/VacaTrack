@@ -13,7 +13,7 @@
 #include <SD.h>
 
 #define uS_TO_S_FACTOR 1000000  /* Conversion factor for micro seconds to seconds */
-#define TIME_TO_SLEEP  30        /* Time ESP32 will go to sleep (in seconds) */
+#define TIME_TO_SLEEP  300      /* Time ESP32 will go to sleep (in seconds) */
 RTC_DATA_ATTR int bootCount = 0;
 
 int GREEN_LED_PIN = 27;
@@ -47,8 +47,8 @@ String bearing;  //Variable to store orientation or direction of GPS
 
 char auth[] = "922ea8d166054798a4b0bdb5aa524c67";              //Your Project authentication key
 char ssid[] = "internetSA";                                       // Name of your network (HotSpot or Router name)
-char pass[] = "fadababaca";                                      // Corresponding Password
-
+//char pass[] = "fadababaca";                                      // Corresponding Password
+char pass[] = "semsenha";
 
 int16_t utc = -3;
 WiFiUDP ntpUDP;
@@ -66,7 +66,7 @@ void setup()
   //ss.begin(GPSBaud);
   Blynk.begin(auth, ssid, pass);
   ThingSpeak.begin(client);
-  timer.setInterval(5000L, checkGPS); // every 5s check if GPS is connected, only really needs to be done once
+  timer.setInterval(500L, checkGPS); // every 5s check if GPS is connected, only really needs to be done once
   pinMode(GREEN_LED_PIN,OUTPUT);
    
 }
